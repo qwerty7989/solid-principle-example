@@ -67,9 +67,9 @@ interface Filter<T> {
     Stream<T> filter(List<T> items, Specification<T> spec);
 }
 
-class BetterFilter implements Filter<Product> {
+class BetterFilter<T> implements Filter<T> {
     @Override
-    public Stream<Product> filter(List<Product> items, Specification<Product> spec) {
+    public Stream<T> filter(List<T> items, Specification<T> spec) {
         return items.stream().filter(spec::isSatisfied);
     }
 }
@@ -102,22 +102,22 @@ class SOLID_O {
         pf.filterByColor(products, Color.GREEN)
                 .forEach(p -> System.out.println(" - " + p.name + " is green "));
 
-        BetterFilter bf = new BetterFilter();
+        BetterFilter bf = new BetterFilter<Product>();
         System.out.println("Green products: (new)");
         bf.filter(products, new ColorSpecification(Color.GREEN))
                 .forEach(p -> System.out.println(" - " + p.name + " is green "));
 
         System.out.println("Blue AND Large products: (new)");
-        bf.filter(products, 
-            new AndSpecification<>(
-                new ColorSpecification(Color.BLUE), 
-                new SizeSpecification(Size.LARGE)))
-            .forEach(p -> System.out.println(" - " + p.name + "is blue and large"));
-    
+        bf.filter(products,
+                new AndSpecification<>(
+                        new ColorSpecification(Color.BLUE),
+                        new SizeSpecification(Size.LARGE)))
+                .forEach(p -> System.out.println(" - " + p.name + "is blue and large"));
+
         /*
          * Todo
          * - add ListSpecification
          */
-    
+
     }
 }
