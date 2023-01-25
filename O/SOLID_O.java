@@ -21,6 +21,10 @@ class Product {
         this.color = color;
         this.size = size;
     }
+
+    public String getName() {
+        return name;
+    }
 }
 
 class ProductFilter {
@@ -102,7 +106,7 @@ class SOLID_O {
         pf.filterByColor(products, Color.GREEN)
                 .forEach(p -> System.out.println(" - " + p.name + " is green "));
 
-        BetterFilter bf = new BetterFilter<Product>();
+        BetterFilter<Product> bf = new BetterFilter<>();
         System.out.println("Green products: (new)");
         bf.filter(products, new ColorSpecification(Color.GREEN))
                 .forEach(p -> System.out.println(" - " + p.name + " is green "));
