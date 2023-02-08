@@ -98,5 +98,8 @@ class Photocopier implements Printer, Scanner {
 }
 
 class SOLID_I {
-
+    public static void main(String[] args) {
+        Photocopier a = new Photocopier();
+        JustAPrinter b = new JustAPrinter();
+    }
 }
