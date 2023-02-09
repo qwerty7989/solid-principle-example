@@ -47,14 +47,14 @@ class Persistence
 class SOLID_S
 {
     public static void main(String[] args) throws Exception {
-        Journal j = new Journal();
-        j.addEntry("Hello World");
-        j.addEntry("The world is fire");
-        System.out.println(j);
+        Journal jnrl = new Journal();
+        jnrl.addEntry("Hello World");
+        jnrl.addEntry("The world is fire");
+        System.out.println(jnrl);
 
         Persistence p = new Persistence();
         String filename = "journal.txt";
-        p.saveToFile(j, filename, true);
+        p.saveToFile(jnrl, filename, true);
 
         Runtime.getRuntime().exec("notepad.exe " + filename);
     }
