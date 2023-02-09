@@ -48,7 +48,7 @@ class SOLID_S
 {
     public static void main(String[] args) throws Exception {
         Journal j = new Journal();
-        j.addEntry("Hell World");
+        j.addEntry("Hello World");
         j.addEntry("The world is fire");
         System.out.println(j);
 
